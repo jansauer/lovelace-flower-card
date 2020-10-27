@@ -1,0 +1,54 @@
+{
+  "name": "flower-card",
+  "version": "0.9.0",
+  "description": "Lovelace Flower Card for Home Assistant",
+  "keywords": [
+    "home-assistant",
+    "homeassistant",
+    "flower",
+    "plant",
+    "lovelace",
+    "custom-cards",
+    "hacs"
+  ],
+  "homepage": "https://github.com/jansauer/lovelace-flower-card#readme",
+  "repository": "github:jansauer/lovelace-flower-card",
+  "author": "Jan Sauer <jan@jansauer.de> (https://jansauer.de)",
+  "license": "MIT",
+  "module": "flower-card.js",
+  "scripts": {
+    "start": "rollup -c rollup.config.dev.js --watch",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:prettier": "prettier --check .",
+    "lint:eslint": "eslint src/*.ts",
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "custom-card-helpers": "1.6.3",
+    "lit-element": "2.4.0",
+    "lit-html": "1.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.6.4",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
+    "@babel/plugin-proposal-decorators": "7.4.0",
+    "@rollup/plugin-json": "4.1.0",
+    "@typescript-eslint/eslint-plugin": "4.6.0",
+    "@typescript-eslint/parser": "4.6.0",
+    "eslint": "7.12.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.15.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "3.1.4",
+    "prettier": "2.1.2",
+    "rollup": "2.32.1",
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-serve": "1.0.4",
+    "rollup-plugin-terser": "7.0.2",
+    "rollup-plugin-typescript2": "0.28.0",
+    "rollup-plugin-uglify": "6.0.4",
+    "typescript": "4.0.5"
+  }
+}

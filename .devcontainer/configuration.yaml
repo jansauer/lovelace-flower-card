@@ -1,0 +1,7 @@
+default_config:
+lovelace:
+  mode: yaml
+demo:
+
+light:
+  - platform: demo
