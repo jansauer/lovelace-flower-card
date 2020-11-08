@@ -3,7 +3,7 @@ name: "Build"
 on:
   push:
     branches:
-      - master
+      - '*'
   pull_request:
     branches:
       - master
@@ -12,9 +12,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - run: nvm install
         shell: bash -l {0} 
       - run: npm ic
       # - run: npm run lint
       - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: flower-card.js
+          path: dist/flower-card.js

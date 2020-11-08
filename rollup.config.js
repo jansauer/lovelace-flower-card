@@ -34,7 +34,7 @@ export default [
   {
     input: "src/card.ts",
     output: {
-      dir: "dist",
+      file: "dist/flower-card.js",
       format: "es",
     },
     plugins: [...plugins],
