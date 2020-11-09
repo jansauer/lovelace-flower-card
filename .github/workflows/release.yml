@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - '*'
+      - "*"
 
 jobs:
   release:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: nvm install
-        shell: bash -l {0} 
+        shell: bash -l {0}
       - run: npm ic
       - run: npm run build
       - name: Upload zip to release

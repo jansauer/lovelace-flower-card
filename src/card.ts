@@ -40,10 +40,6 @@ export class FlowerCard extends LitElement {
     return document.createElement("flower-card-editor");
   }
 
-  public static getStubConfig(): object {
-    return {};
-  }
-
   @property() public hass!: HomeAssistant;
   @property() private config!: FlowerCardConfig;
 

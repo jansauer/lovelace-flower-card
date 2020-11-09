@@ -3,7 +3,7 @@ name: "Build"
 on:
   push:
     branches:
-      - '*'
+      - "*"
   pull_request:
     branches:
       - master
@@ -14,9 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: nvm install
-        shell: bash -l {0} 
+        shell: bash -l {0}
       - run: npm ic
-      # - run: npm run lint
+      - run: npm run lint
       - run: npm run build
       - uses: actions/upload-artifact@v2
         with:
