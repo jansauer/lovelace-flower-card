@@ -78,7 +78,7 @@ export class FlowerCard extends LitElement {
     return html`
       <ha-card tabindex="0" .label=${`Boilerplate: ${this.config.entity || "No Entity Defined"}`}>
         <div class="header">
-          <img src="/local/plants/ficus.jpg" />
+          <img src="${plant.attributes.entity_picture}" />
           <div class="info">
             <h1 id="name">${plant.attributes.friendly_name}</h1>
             <span id="problem"></span>
@@ -86,17 +86,16 @@ export class FlowerCard extends LitElement {
         </div>
 
         <div class="attributes">
-          ${this.renderAttribute("temperature", "mdi:thermometer")}
-          ${this.renderAttribute("brightness", "mdi:white-balance-sunny")}
-          ${this.renderAttribute("moisture", "mdi:water-percent")}
-          ${this.renderAttribute("conductivity", "mdi:leaf")}
+          ${this.renderAttribute(plant, "moisture", "mdi:water-percent")}
+          ${this.renderAttribute(plant, "conductivity", "mdi:leaf")}
+          ${this.renderAttribute(plant, "brightness", "mdi:white-balance-sunny")}
+          ${this.renderAttribute(plant, "temperature", "mdi:thermometer")}
         </div>
       </ha-card>
     `;
   }
 
-  private renderAttribute(attr: string, icon: string): TemplateResult | void {
-    const plant = this.hass.states["plant.ficus"];
+  private renderAttribute(plant: any, attr: string, icon: string): TemplateResult | void {
     const val = plant.attributes[attr];
     const min = plant.attributes.limits["min_" + attr];
     const max = plant.attributes.limits["max_" + attr];

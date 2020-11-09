@@ -3,7 +3,7 @@ import { css } from "lit-element";
 export const Styles = css`
   .header {
     display: flex;
-    height: 72px;
+    height: 80px;
     padding-top: 8px;
   }
 
@@ -13,7 +13,6 @@ export const Styles = css`
     border-radius: 80px;
     margin-left: 16px;
     margin-right: 16px;
-    margin-top: -10px;
     box-shadow: var(
       --ha-card-box-shadow,
       0 2px 2px 0 rgba(0, 0, 0, 0.14),
