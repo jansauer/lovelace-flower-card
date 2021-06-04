@@ -1,4 +1,3 @@
 {
-  "extends": ["group:all"],
   "labels": ["renovate"]
 }

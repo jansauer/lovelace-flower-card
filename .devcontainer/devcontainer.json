@@ -4,7 +4,7 @@
   "image": "ludeeus/container:monster",
   "context": "..",
   "appPort": ["5000:5000", "9123:8123"],
-  "postCreateCommand": "npm install",
+  "postCreateCommand": "rm -rf /config/custom_components && ln -sf $(pwd)/.devcontainer/custom_components/ /config/custom_components && rm -rf /config/www && ln -sf $(pwd)/.devcontainer/www/ /config/www && npm install",
   "extensions": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
@@ -16,11 +16,12 @@
   ],
   "settings": {
     "files.eol": "\n",
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "terminal.integrated.shell.linux": "/bin/bash",
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
+    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true
   }
 }

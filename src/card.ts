@@ -7,17 +7,11 @@ import {
   TemplateResult,
   PropertyValues,
 } from "lit-element";
-import {
-  HomeAssistant,
-  hasConfigOrEntityChanged,
-  LovelaceCardEditor,
-  getLovelace,
-} from "custom-card-helpers";
+import { HomeAssistant, hasConfigOrEntityChanged, LovelaceCardEditor } from "custom-card-helpers";
 
 import "./editor";
-
 import { FlowerCardConfig } from "./types";
-import { CARD_VERSION } from "./const";
+import { CARD_VERSION, DEFAULTS } from "./const";
 import { Styles } from "./styles";
 
 /* eslint no-console: 0 */
@@ -44,12 +38,8 @@ export class FlowerCard extends LitElement {
   @property() private config!: FlowerCardConfig;
 
   public setConfig(config: FlowerCardConfig): void {
-    if (!config || config.show_error) {
-      throw new Error("Invalid configuration");
-    }
-
-    if (config.test_gui) {
-      getLovelace().setEditMode(true);
+    if (!config.entity) {
+      throw new Error("You need to define an entity");
     }
 
     this.config = config;
@@ -64,11 +54,6 @@ export class FlowerCard extends LitElement {
   }
 
   protected render(): TemplateResult | void {
-    if (this.config.show_warning) {
-      return this.showWarning("Show Warning");
-    }
-
-    console.log(this.config.entity);
     const plant = this.hass.states[this.config.entity || ""];
 
     return html`
@@ -77,7 +62,6 @@ export class FlowerCard extends LitElement {
           <img src="${plant.attributes.entity_picture}" />
           <div class="info">
             <h1 id="name">${plant.attributes.friendly_name}</h1>
-            <span id="problem"></span>
           </div>
         </div>
 
@@ -93,10 +77,9 @@ export class FlowerCard extends LitElement {
 
   private renderAttribute(plant: any, attr: string, icon: string): TemplateResult | void {
     const val = plant.attributes[attr];
-    const min = plant.attributes.limits["min_" + attr];
-    const max = plant.attributes.limits["max_" + attr];
+    const min = this.config["min_" + attr] || DEFAULTS["min_" + attr];
+    const max = this.config["max_" + attr] || DEFAULTS["max_" + attr];
     const unit = plant.attributes.unit_of_measurement_dict[attr];
-
     const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)));
 
     return html`
@@ -113,21 +96,6 @@ export class FlowerCard extends LitElement {
         </div>
       </div>
     `;
-  }
-
-  private showWarning(warning: string): TemplateResult {
-    return html` <hui-warning>${warning}</hui-warning> `;
-  }
-
-  private showError(error: string): TemplateResult {
-    const errorCard = document.createElement("hui-error-card");
-    errorCard.setConfig({
-      type: "error",
-      error,
-      origConfig: this.config,
-    });
-
-    return html` ${errorCard} `;
   }
 
   static get styles(): CSSResult {

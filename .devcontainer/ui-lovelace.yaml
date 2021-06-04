@@ -1,9 +1,10 @@
 resources:
-  - url: http://127.0.0.1:5000/boilerplate-card.js
+  - url: http://127.0.0.1:5000/flower-card.js?v2
     type: module
+
 views:
   - cards:
-      - type: custom:boilerplate-card
-        name: Boilerplate Card Development
-        entity: sun.sun
-        test_gui: true
+      - type: custom:flower-card
+        entity: plant.basil
+      - type: custom:flower-card
+        entity: plant.basil

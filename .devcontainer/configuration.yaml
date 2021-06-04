@@ -1,7 +1,57 @@
 default_config:
+
 lovelace:
   mode: yaml
-demo:
 
-light:
-  - platform: demo
+sensor:
+  - platform: random
+    name: Basil Moisture
+    minimum: 10
+    maximum: 70
+    unit_of_measurement: "%"
+  - platform: random
+    name: Basil Conductivity
+    minimum: 300
+    maximum: 2100
+    unit_of_measurement: "µS/cm"
+  - platform: random
+    name: Basil Light intensity
+    minimum: 2000
+    maximum: 60500
+    unit_of_measurement: "lx"
+  - platform: random
+    name: Basil Temperature
+    minimum: 5
+    maximum: 40
+    unit_of_measurement: "°C"
+  - platform: random
+    name: Basil Battery
+    minimum: 1
+    maximum: 100
+    unit_of_measurement: "%"
+
+plant:
+  basil:
+    sensors:
+      moisture: sensor.basil_moisture
+      conductivity: sensor.basil_conductivity
+      brightness: sensor.basil_light_intensity
+      temperature: sensor.basil_temperature
+      battery: sensor.basil_battery
+    min_moisture: 20
+    max_moisture: 60
+    min_conductivity: 350
+    max_conductivity: 2000
+    min_brightness: 2500
+    max_brightness: 60000
+    min_temperature: 8
+    max_temperature: 32
+    min_battery: 10
+
+homeassistant:
+  customize:
+    plant.basil:
+      entity_picture: /local/basil.jpg
+
+logger:
+  default: debug
