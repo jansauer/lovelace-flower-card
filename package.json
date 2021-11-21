@@ -26,7 +26,7 @@
   "dependencies": {
     "custom-card-helpers": "1.8.0",
     "lit-element": "3.0.2",
-    "lit-html": "1.4.1"
+    "lit-html": "2.0.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.4.0",
