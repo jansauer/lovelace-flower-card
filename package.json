@@ -34,7 +34,7 @@
     "esbuild": "0.25.5",
     "eslint": "8.57.1",
     "eslint-config-prettier": "10.1.5",
-    "prettier": "2.8.8",
+    "prettier": "3.6.2",
     "typescript": "5.8.3"
   }
 }
