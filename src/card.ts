@@ -18,7 +18,7 @@ import { Styles } from "./styles";
 console.info(
   `%c FLOWER-CARD %c ${CARD_VERSION}`,
   "color: white; background: forestgreen; font-weight: 700;",
-  "color: forestgreen; background: white; font-weight: 700;"
+  "color: forestgreen; background: white; font-weight: 700;",
 );
 
 (window as any).customCards = (window as any).customCards || [];
@@ -59,7 +59,7 @@ export class FlowerCard extends LitElement {
     return html`
       <ha-card tabindex="0" .label=${`Boilerplate: ${this.config.entity || "No Entity Defined"}`}>
         <div class="header">
-          <img src="${plant.attributes.entity_picture}" />
+          <img src=${plant.attributes.entity_picture} />
           <div class="info">
             <h1 id="name">${plant.attributes.friendly_name}</h1>
           </div>
@@ -84,12 +84,12 @@ export class FlowerCard extends LitElement {
 
     return html`
       <div class="attribute" title="${val} ${unit} | ${min} ~ ${max} ${unit}">
-        <ha-icon icon="${icon}"></ha-icon>
+        <ha-icon icon=${icon}></ha-icon>
         <div class="meter red">
-          <span class="${val < min || val > max ? "bad" : "good"}" style="width: 100%;"></span>
+          <span class=${val < min || val > max ? "bad" : "good"} style="width: 100%;"></span>
         </div>
         <div class="meter green">
-          <span class="${val > max ? "bad" : "good"}" style="width:${pct}%;" />
+          <span class=${val > max ? "bad" : "good"} style="width:${pct}%;" />
         </div>
         <div class="meter red">
           <span class="bad" style="width:${val > max ? 100 : 0}%;" />

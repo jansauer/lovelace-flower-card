@@ -47,7 +47,7 @@ export class FlowerCardEditor extends LitElement implements LovelaceCardEditor {
 
     // restrict options to plant domain type
     const entities = Object.keys(this.hass.states).filter(
-      (eid) => eid.substr(0, eid.indexOf(".")) === "plant"
+      (eid) => eid.substr(0, eid.indexOf(".")) === "plant",
     );
 
     return html`
