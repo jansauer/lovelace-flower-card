@@ -18,7 +18,7 @@ jobs:
       - run: npm ic
       - run: npm run lint
       - run: npm run build
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: flower-card.js
           path: dist/flower-card.js
