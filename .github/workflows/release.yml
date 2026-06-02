@@ -15,7 +15,7 @@ jobs:
       - run: npm ic
       - run: npm run build
       - name: Upload zip to release
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@2.11.5
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/flower-card.js
